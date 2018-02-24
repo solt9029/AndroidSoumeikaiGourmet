@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
         shopListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view, int pos, long id) {
                 ListView listView = (ListView)parent;
-                String item = (String)listView.getItemAtPosition(pos);
+                String item = "aiueo";
                 Toast.makeText(MainActivity.this, item, Toast.LENGTH_SHORT).show();
             }
         });
