@@ -38,7 +38,7 @@ public class ShopAdapter extends BaseAdapter{
     @Override
     public View getView(int position, View convertView, ViewGroup parent){
         convertView = layoutInflater.inflate(R.layout.shop_listview_cell, parent, false);
-        TextView nameView = (TextView)convertView.findViewById(R.id.nameTextView);
+        TextView nameView = (TextView)convertView.findViewById(R.id.name_text);
         nameView.setText(shopList.get(position).getName());
 
         return convertView;
