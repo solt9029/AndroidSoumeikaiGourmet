@@ -14,6 +14,12 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
+    private Shop shops[] = {
+            new Shop(1,"畔居", "和食", "03-3271-2000", "東京都中央区日本橋1-2-10", 39, 139, "https://tabelog.com/tokyo/A1302/A130203/13034278/", "日本橋駅15秒！掘炬燵個室22名・椅子個室28名迄。接待・歓送迎・結納を静かな個室で。", "北村元嚝", "無", "昭和39年", "三九会"),
+            new Shop(2,"東洋", "洋食", "03-3271-0003", "東京都中央区日本橋1-2-10", 39, 139, "https://tabelog.com/tokyo/A1302/A130203/13034278/", "銀座線東西線日本橋駅B9出口より徒歩30秒！最大320席！同期会にぜひご利用ください！", "北村元嚝", "無", "昭和39年", "三九会"),
+            new Shop(3,"ラコルタ", "イタリアン", "03-3231-0610", "東京都中央区日本橋2-9-6", 39, 139, "https://tabelog.com/tokyo/A1302/A130203/13034278/", "リピート率90％を誇る、歓送迎会セットあります。", "長谷川隆洋", "水泳部", "昭和61年", "新世輝"),
+            new Shop(4,"吉野鮨本店", "寿司", "03-3274-3001", "東京都中央区日本橋3-8-11", 39, 139, "https://tabelog.com/tokyo/A1302/A130203/13034278/", "塩と酢のみで仕上げたシャリ、仕上げに自家製の煮切醤油を塗って出すスタイルは、創業当時のまま。", "吉野正敏", "ESS", "昭和61年", "新世輝")
+    };
     private ArrayList<Shop> shopList;
     private String distanceOptions[] = {"距離指定なし", "5km圏内", "10km圏内", "20km圏内", "50km圏内", "100km圏内"};
     private String clubOptions[] = {"部活指定なし", "風紀委員会", "ボーイスカウト部", "硬式野球部", "生徒会本部", "硬式テニス部", "美術演劇部", "美術部", "山岳部", "ESS", "バドミントン部", "水泳部", "卓球部", "フェンシング部", "物理部", "化学部", "バスケ部", "剣道部", "柔道部", "マンドリン部", "吹奏楽班", "相撲部", "応援指導班", "JRC インターアクト", "商業研究部", "スキー部"};
@@ -25,14 +31,13 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        // リスト表示
+        // 表示するお店のみを格納する
         ListView shopListView = (ListView)findViewById(R.id.shop_list);
 
         shopList = new ArrayList<>();
-        shopList.add(new Shop(1,"畔居", "和食", "03-3271-2000", "東京都中央区日本橋1-2-10", 39, 139, "https://tabelog.com/tokyo/A1302/A130203/13034278/", "日本橋駅15秒！掘炬燵個室22名・椅子個室28名迄。接待・歓送迎・結納を静かな個室で。", "北村元嚝", "無", "昭和39年", "三九会"));
-        shopList.add(new Shop(2,"東洋", "洋食", "03-3271-0003", "東京都中央区日本橋1-2-10", 39, 139, "https://tabelog.com/tokyo/A1302/A130203/13034278/", "銀座線東西線日本橋駅B9出口より徒歩30秒！最大320席！同期会にぜひご利用ください！", "北村元嚝", "無", "昭和39年", "三九会"));
-        shopList.add(new Shop(3,"ラコルタ", "イタリアン", "03-3231-0610", "東京都中央区日本橋2-9-6", 39, 139, "https://tabelog.com/tokyo/A1302/A130203/13034278/", "リピート率90％を誇る、歓送迎会セットあります。", "長谷川隆洋", "水泳部", "昭和61年", "新世輝"));
-        shopList.add(new Shop(4,"吉野鮨本店", "寿司", "03-3274-3001", "東京都中央区日本橋3-8-11", 39, 139, "https://tabelog.com/tokyo/A1302/A130203/13034278/", "塩と酢のみで仕上げたシャリ、仕上げに自家製の煮切醤油を塗って出すスタイルは、創業当時のまま。", "吉野正敏", "ESS", "昭和61年", "新世輝"));
+        for (int i = 0; i < shops.length; i++) {
+            shopList.add(shops[i]);
+        }
 
         ShopAdapter shopAdapter = new ShopAdapter(this, shopList);
         shopListView.setAdapter(shopAdapter);
@@ -75,7 +80,17 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 Spinner spinner = (Spinner)parent;
-                String item = (String)spinner.getSelectedItem();
+                String selectedClub = (String)spinner.getSelectedItem();
+                switch (selectedClub) {
+                    case "水泳部":
+                        shopList.add(new Shop(3,"ラコルタ", "イタリアン", "03-3231-0610", "東京都中央区日本橋2-9-6", 39, 139, "https://tabelog.com/tokyo/A1302/A130203/13034278/", "リピート率90％を誇る、歓送迎会セットあります。", "長谷川隆洋", "水泳部", "昭和61年", "新世輝"));
+                        shopList.add(new Shop(3,"ラコルタ", "イタリアン", "03-3231-0610", "東京都中央区日本橋2-9-6", 39, 139, "https://tabelog.com/tokyo/A1302/A130203/13034278/", "リピート率90％を誇る、歓送迎会セットあります。", "長谷川隆洋", "水泳部", "昭和61年", "新世輝"));
+                        shopList.add(new Shop(3,"ラコルタ", "イタリアン", "03-3231-0610", "東京都中央区日本橋2-9-6", 39, 139, "https://tabelog.com/tokyo/A1302/A130203/13034278/", "リピート率90％を誇る、歓送迎会セットあります。", "長谷川隆洋", "水泳部", "昭和61年", "新世輝"));
+
+                        break;
+                    default:
+                        break;
+                }
             }
             public void onNothingSelected(AdapterView<?> parent) {
                 // 何も選択されなかったとき
