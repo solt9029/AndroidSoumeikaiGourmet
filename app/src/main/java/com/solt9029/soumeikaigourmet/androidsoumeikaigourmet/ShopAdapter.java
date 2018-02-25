@@ -39,10 +39,15 @@ public class ShopAdapter extends BaseAdapter{
     @Override
     public View getView(int position, View convertView, ViewGroup parent){
         convertView = layoutInflater.inflate(R.layout.shop_listview_cell, parent, false);
+
+        // 店の名前
         TextView nameText = (TextView)convertView.findViewById(R.id.name_text);
         nameText.setText(shopList.get(position).getName());
+
+        // 店の画像
         ImageView imageImage = (ImageView)convertView.findViewById(R.id.image_image);
-        imageImage.setImageResource(R.drawable.shop1);
+        int drawableId = context.getResources().getIdentifier("shop" + shopList.get(position).getId(), "drawable", context.getPackageName());
+        imageImage.setImageResource(drawableId);
 
         return convertView;
     }

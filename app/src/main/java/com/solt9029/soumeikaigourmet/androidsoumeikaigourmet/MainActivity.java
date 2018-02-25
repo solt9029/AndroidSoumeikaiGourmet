@@ -55,8 +55,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-
         ListView shopListView = (ListView)findViewById(R.id.shop_list);
 
         shopList = new ArrayList<>();
@@ -74,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
         shopListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view, int pos, long id) {
                 ListView listView = (ListView)parent;
-                String item = "aiueo";
+                String item = (String)shopList.get(pos).getLink();
                 Toast.makeText(MainActivity.this, item, Toast.LENGTH_SHORT).show();
             }
         });
