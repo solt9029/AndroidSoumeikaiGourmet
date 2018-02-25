@@ -23,6 +23,31 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+
+        // リスト表示
+        ListView shopListView = (ListView)findViewById(R.id.shop_list);
+
+        shopList = new ArrayList<>();
+        shopList.add(new Shop(1,"畔居", "和食", "03-3271-2000", "東京都中央区日本橋1-2-10", 39, 139, "https://tabelog.com/tokyo/A1302/A130203/13034278/", "日本橋駅15秒！掘炬燵個室22名・椅子個室28名迄。接待・歓送迎・結納を静かな個室で。", "北村元嚝", "無", "昭和39年", "三九会"));
+        shopList.add(new Shop(2,"東洋", "洋食", "03-3271-0003", "東京都中央区日本橋1-2-10", 39, 139, "https://tabelog.com/tokyo/A1302/A130203/13034278/", "銀座線東西線日本橋駅B9出口より徒歩30秒！最大320席！同期会にぜひご利用ください！", "北村元嚝", "無", "昭和39年", "三九会"));
+        shopList.add(new Shop(3,"ラコルタ", "イタリアン", "03-3231-0610", "東京都中央区日本橋2-9-6", 39, 139, "https://tabelog.com/tokyo/A1302/A130203/13034278/", "リピート率90％を誇る、歓送迎会セットあります。", "長谷川隆洋", "水泳部", "昭和61年", "新世輝"));
+        shopList.add(new Shop(4,"吉野鮨本店", "寿司", "03-3274-3001", "東京都中央区日本橋3-8-11", 39, 139, "https://tabelog.com/tokyo/A1302/A130203/13034278/", "塩と酢のみで仕上げたシャリ、仕上げに自家製の煮切醤油を塗って出すスタイルは、創業当時のまま。", "吉野正敏", "ESS", "昭和61年", "新世輝"));
+
+        ShopAdapter shopAdapter = new ShopAdapter(this, shopList);
+        shopListView.setAdapter(shopAdapter);
+        shopListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View view, int pos, long id) {
+                // リンクに飛ばす
+                String link = (String)shopList.get(pos).getLink();
+                Uri uri = Uri.parse(link);
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
+            }
+        });
+
+
+
         // 距離Spinner
         Spinner distanceSpinner = findViewById(R.id.distance_spinner);
         ArrayAdapter<String> distanceAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, distanceOptions);
@@ -39,6 +64,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+
         // 部活動Spinner
         Spinner clubSpinner = findViewById(R.id.club_spinner);
         ArrayAdapter<String> clubAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, clubOptions);
@@ -54,27 +81,5 @@ public class MainActivity extends AppCompatActivity {
                 // 何も選択されなかったとき
             }
         });
-
-        ListView shopListView = (ListView)findViewById(R.id.shop_list);
-
-        shopList = new ArrayList<>();
-        shopList.add(new Shop(1,"畔居", "和食", "03-3271-2000", "東京都中央区日本橋1-2-10", 39, 139, "https://tabelog.com/tokyo/A1302/A130203/13034278/", "日本橋駅15秒！掘炬燵個室22名・椅子個室28名迄。接待・歓送迎・結納を静かな個室で。", "北村元嚝", "無", "昭和39年", "三九会"));
-        shopList.add(new Shop(2,"東洋", "洋食", "03-3271-0003", "東京都中央区日本橋1-2-10", 39, 139, "https://tabelog.com/tokyo/A1302/A130203/13034278/", "銀座線東西線日本橋駅B9出口より徒歩30秒！最大320席！同期会にぜひご利用ください！", "北村元嚝", "無", "昭和39年", "三九会"));
-        shopList.add(new Shop(3,"ラコルタ", "イタリアン", "03-3231-0610", "東京都中央区日本橋2-9-6", 39, 139, "https://tabelog.com/tokyo/A1302/A130203/13034278/", "リピート率90％を誇る、歓送迎会セットあります。", "長谷川隆洋", "水泳部", "昭和61年", "新世輝"));
-        shopList.add(new Shop(4,"吉野鮨本店", "寿司", "03-3274-3001", "東京都中央区日本橋3-8-11", 39, 139, "https://tabelog.com/tokyo/A1302/A130203/13034278/", "塩と酢のみで仕上げたシャリ、仕上げに自家製の煮切醤油を塗って出すスタイルは、創業当時のまま。", "吉野正敏", "ESS", "昭和61年", "新世輝"));
-
-        ShopAdapter shopAdapter = new ShopAdapter(this, shopList);
-        shopListView.setAdapter(shopAdapter);
-
-        shopListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            public void onItemClick(AdapterView<?> parent, View view, int pos, long id) {
-                // リンクに飛ばす
-                String link = (String)shopList.get(pos).getLink();
-                Uri uri = Uri.parse(link);
-                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-                startActivity(intent);
-            }
-        });
-
     }
 }
