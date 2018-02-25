@@ -1,6 +1,7 @@
 package com.solt9029.soumeikaigourmet.androidsoumeikaigourmet;
 
 public class Shop {
+    private int id;
     private String name;
     private String category;
     private String phone_number;
@@ -14,7 +15,8 @@ public class Shop {
     private String owner_graduated_at;
     private String owner_group;
 
-    public Shop(String name, String category, String phone_number, String address, double latitude, double longitude, String link, String comment, String owner_name, String owner_club, String owner_graduated_at, String owner_group) {
+    public Shop(int id, String name, String category, String phone_number, String address, double latitude, double longitude, String link, String comment, String owner_name, String owner_club, String owner_graduated_at, String owner_group) {
+        this.id = id;
         this.name = name;
         this.category = category;
         this.phone_number = phone_number;
@@ -27,6 +29,10 @@ public class Shop {
         this.owner_club = owner_club;
         this.owner_graduated_at = owner_graduated_at;
         this.owner_group = owner_group;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getName() {

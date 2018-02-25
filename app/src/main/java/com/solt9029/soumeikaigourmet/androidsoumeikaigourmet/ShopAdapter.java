@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -38,8 +39,10 @@ public class ShopAdapter extends BaseAdapter{
     @Override
     public View getView(int position, View convertView, ViewGroup parent){
         convertView = layoutInflater.inflate(R.layout.shop_listview_cell, parent, false);
-        TextView nameView = (TextView)convertView.findViewById(R.id.name_text);
-        nameView.setText(shopList.get(position).getName());
+        TextView nameText = (TextView)convertView.findViewById(R.id.name_text);
+        nameText.setText(shopList.get(position).getName());
+        ImageView imageImage = (ImageView)convertView.findViewById(R.id.image_image);
+        imageImage.setImageResource(R.drawable.shop1);
 
         return convertView;
     }
