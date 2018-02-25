@@ -4,7 +4,7 @@ public class Shop {
     private int id;
     private String name;
     private String category;
-    private String phone_number;
+    private String phoneNumber;
     private String address;
     private double latitude;
     private double longitude;
@@ -15,11 +15,11 @@ public class Shop {
     private String ownerGraduatedAt;
     private String ownerGroup;
 
-    public Shop(int id, String name, String category, String phone_number, String address, double latitude, double longitude, String link, String comment, String ownerName, String ownerClub, String ownerGraduatedAt, String ownerGroup) {
+    public Shop(int id, String name, String category, String phoneNumber, String address, double latitude, double longitude, String link, String comment, String ownerName, String ownerClub, String ownerGraduatedAt, String ownerGroup) {
         this.id = id;
         this.name = name;
         this.category = category;
-        this.phone_number = phone_number;
+        this.phoneNumber = phoneNumber;
         this.address = address;
         this.latitude = latitude;
         this.longitude = longitude;
@@ -43,8 +43,8 @@ public class Shop {
         return category;
     }
 
-    public String getPhone_number() {
-        return phone_number;
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
     public String getAddress() {
