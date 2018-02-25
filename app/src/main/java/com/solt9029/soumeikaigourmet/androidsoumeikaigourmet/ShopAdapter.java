@@ -46,7 +46,10 @@ public class ShopAdapter extends BaseAdapter{
         String ownerGroup = shopList.get(position).getOwnerGroup();
         ownerGraduatedAtGroupText.setText(ownerGraduatedAt + " " + ownerGroup);
 
-
+        TextView ownerNameClubText = (TextView)convertView.findViewById(R.id.owner_name_club_text);
+        String ownerName = shopList.get(position).getOwnerName();
+        String ownerClub = shopList.get(position).getOwnerClub();
+        ownerNameClubText.setText(ownerName + " " + "(" + ownerClub + "所属)");
 
         // 店の画像
         ImageView imageImage = (ImageView)convertView.findViewById(R.id.image_image);
