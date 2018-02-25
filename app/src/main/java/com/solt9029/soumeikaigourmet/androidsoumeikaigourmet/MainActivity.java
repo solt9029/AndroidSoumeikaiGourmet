@@ -71,9 +71,11 @@ public class MainActivity extends AppCompatActivity {
 
         shopListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view, int pos, long id) {
-                ListView listView = (ListView)parent;
-                String item = (String)shopList.get(pos).getLink();
-                Toast.makeText(MainActivity.this, item, Toast.LENGTH_SHORT).show();
+                // リンクに飛ばす
+                String link = (String)shopList.get(pos).getLink();
+                Uri uri = Uri.parse(link);
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
             }
         });
 

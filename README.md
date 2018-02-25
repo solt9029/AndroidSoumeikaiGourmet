@@ -77,3 +77,5 @@
 # 実装参考文献
 
 - http://asky.hatenablog.com/entry/2016/05/04/194303
+
+- http://android.roof-balcony.com/intent/browser/
