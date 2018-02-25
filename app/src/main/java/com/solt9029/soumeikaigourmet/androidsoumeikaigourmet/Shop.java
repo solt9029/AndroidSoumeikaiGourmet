@@ -10,12 +10,12 @@ public class Shop {
     private double longitude;
     private String link;
     private String comment;
-    private String owner_name;
-    private String owner_club;
-    private String owner_graduated_at;
-    private String owner_group;
+    private String ownerName;
+    private String ownerClub;
+    private String ownerGraduatedAt;
+    private String ownerGroup;
 
-    public Shop(int id, String name, String category, String phone_number, String address, double latitude, double longitude, String link, String comment, String owner_name, String owner_club, String owner_graduated_at, String owner_group) {
+    public Shop(int id, String name, String category, String phone_number, String address, double latitude, double longitude, String link, String comment, String ownerName, String ownerClub, String ownerGraduatedAt, String ownerGroup) {
         this.id = id;
         this.name = name;
         this.category = category;
@@ -25,10 +25,10 @@ public class Shop {
         this.longitude = longitude;
         this.link = link;
         this.comment = comment;
-        this.owner_name = owner_name;
-        this.owner_club = owner_club;
-        this.owner_graduated_at = owner_graduated_at;
-        this.owner_group = owner_group;
+        this.ownerName = ownerName;
+        this.ownerClub = ownerClub;
+        this.ownerGraduatedAt = ownerGraduatedAt;
+        this.ownerGroup = ownerGroup;
     }
 
     public int getId() {
@@ -67,19 +67,19 @@ public class Shop {
         return comment;
     }
 
-    public String getOwner_name() {
-        return owner_name;
+    public String getOwnerName() {
+        return ownerName;
     }
 
-    public String getOwner_club() {
-        return owner_club;
+    public String getOwnerClub() {
+        return ownerClub;
     }
 
-    public String getOwner_graduated_at() {
-        return owner_graduated_at;
+    public String getOwnerGraduatedAt() {
+        return ownerGraduatedAt;
     }
 
-    public String getOwner_group() {
-        return owner_group;
+    public String getOwnerGroup() {
+        return ownerGroup;
     }
 }

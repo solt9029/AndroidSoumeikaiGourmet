@@ -40,9 +40,13 @@ public class ShopAdapter extends BaseAdapter{
     public View getView(int position, View convertView, ViewGroup parent){
         convertView = layoutInflater.inflate(R.layout.shop_listview_cell, parent, false);
 
-        // 店の名前
-        TextView nameText = (TextView)convertView.findViewById(R.id.name_text);
-        nameText.setText(shopList.get(position).getName());
+        // 店の人の卒業年と会名
+        TextView ownerGraduatedAtGroupText = (TextView)convertView.findViewById(R.id.owner_graduated_at_group_text);
+        String ownerGraduatedAt = shopList.get(position).getOwnerGraduatedAt();
+        String ownerGroup = shopList.get(position).getOwnerGroup();
+        ownerGraduatedAtGroupText.setText(ownerGraduatedAt + " " + ownerGroup);
+
+
 
         // 店の画像
         ImageView imageImage = (ImageView)convertView.findViewById(R.id.image_image);
