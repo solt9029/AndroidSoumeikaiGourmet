@@ -121,7 +121,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 Spinner spinner = (Spinner)parent;
-                MainActivity.this.selectedDistance = (String)spinner.getSelectedItem();
+                selectedDistance = (String)spinner.getSelectedItem();
 
                 shopList.clear();
             }
@@ -237,8 +237,8 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
     // アプリに対する情報提供を許可してくれるかどうかのダイアログに対する返答を受け取った時
     @Override
     public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
-        // don't ask againにチェックが入ってdenyされたときに、無限ループに陥らないようにする記述です
-        if (!ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.ACCESS_FINE_LOCATION)) {
+        // アプリに対する情報提供を拒否 && RationaleDialogを出す必要がない = つまりdont ask againにチェックを入れてdenyされたとき。無限ループにならないようにreturnしてあげる。
+        if (grantResults[0] != PackageManager.PERMISSION_GRANTED && !ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.ACCESS_FINE_LOCATION)) {
             return;
         }
         startLocationUpdates();
@@ -253,6 +253,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
     @Override
     public void onLocationChanged(Location location) {
         currentLocation = location;
+        Toast.makeText(this, String.format("%s: %f", "latitude", currentLocation.getLatitude()), Toast.LENGTH_SHORT).show();
     }
 
     @Override
