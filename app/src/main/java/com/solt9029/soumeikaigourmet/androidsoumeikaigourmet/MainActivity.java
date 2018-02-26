@@ -217,7 +217,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
                                             }
                                         })
                                         .setCancelable(false)
-                                        .setMessage("このアプリは位置情報の利用を許可する必要があります。")
+                                        .setMessage("現在地からの距離によるお店検索には位置情報が必要になります。")
                                         .show();
                                 return;
                             }
