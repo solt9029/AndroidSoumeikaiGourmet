@@ -124,30 +124,9 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
                     selectedDistance = (String) spinner.getSelectedItem();
                 }
 
-                shopList.clear();
-
-                for (int i = 0; i < shops.length; i++) {
-                    // 部活の絞り込み
-                    if (!selectedClub.equals("部活指定なし")) {
-                        if (!selectedClub.equals(shops[i].getOwnerClub())) {
-                            continue;
-                        }
-                    }
-
-                    // 距離の絞り込み
-                    if (!selectedDistance.equals("距離指定なし")) {
-                        int selectedDistanceInteger = Integer.parseInt(selectedDistance.substring(0, selectedDistance.indexOf("km圏内"))) * 1000; // メートルで比較するので1000をかける
-                        double distance = calculateDistance(shops[i].getLatitude(), shops[i].getLongitude(), currentLocation.getLatitude(), currentLocation.getLongitude());
-                        if (distance > selectedDistanceInteger) {
-                            continue;
-                        }
-                    }
-
-                    shopList.add(shops[i]);
-                }
-
-                shopListView.invalidateViews();
+                MainActivity.this.updateShopList(); // shopListを更新する
             }
+            @Override
             public void onNothingSelected(AdapterView<?> parent) {
                 // 何も選択されなかったとき
             }
@@ -166,6 +145,34 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
         clubAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         clubSpinner.setAdapter(clubAdapter);
         clubSpinner.setOnItemSelectedListener(spinnerListener);
+    }
+
+
+    // shopListをselectedClub,selectedDistance,currentLocationに基づいて更新する
+    private void updateShopList() {
+        shopList.clear();
+
+        for (int i = 0; i < shops.length; i++) {
+            // 部活の絞り込み
+            if (!selectedClub.equals("部活指定なし")) {
+                if (!selectedClub.equals(shops[i].getOwnerClub())) {
+                    continue;
+                }
+            }
+
+            // 距離の絞り込み
+            if (!selectedDistance.equals("距離指定なし")) {
+                int selectedDistanceInteger = Integer.parseInt(selectedDistance.substring(0, selectedDistance.indexOf("km圏内"))) * 1000; // メートルで比較するので1000をかける
+                double distance = calculateDistance(shops[i].getLatitude(), shops[i].getLongitude(), currentLocation.getLatitude(), currentLocation.getLongitude());
+                if (distance > selectedDistanceInteger) {
+                    continue;
+                }
+            }
+
+            shopList.add(shops[i]);
+        }
+
+        shopListView.invalidateViews();
     }
 
 
@@ -260,7 +267,8 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
     @Override
     public void onLocationChanged(Location location) {
         currentLocation = location;
-        Toast.makeText(this, String.format("%s: %f", "longitude", currentLocation.getLongitude()), Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this, String.format("%s: %f", "longitude", currentLocation.getLongitude()), Toast.LENGTH_SHORT).show();
+
     }
 
     @Override
