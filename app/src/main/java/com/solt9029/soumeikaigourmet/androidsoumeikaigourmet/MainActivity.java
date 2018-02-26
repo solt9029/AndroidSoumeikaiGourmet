@@ -267,8 +267,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
     @Override
     public void onLocationChanged(Location location) {
         currentLocation = location;
-//        Toast.makeText(this, String.format("%s: %f", "longitude", currentLocation.getLongitude()), Toast.LENGTH_SHORT).show();
-
+        updateShopList();
     }
 
     @Override
