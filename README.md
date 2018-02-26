@@ -79,3 +79,5 @@
 - http://asky.hatenablog.com/entry/2016/05/04/194303
 
 - http://android.roof-balcony.com/intent/browser/
+
+- https://qiita.com/yasumodev/items/44f7fd84a58b709a0349
