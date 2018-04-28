@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
 
     private ArrayList<Shop> shopList; // 表示するお店のみを格納する
     private String distanceOptions[] = {"距離指定なし", "3km圏内", "5km圏内", "7km圏内", "10km圏内", "20km圏内", "50km圏内", "100km圏内"};
-    private String clubOptions[] = {"部活指定なし", "風紀委員会", "ボーイスカウト部", "硬式野球部", "生徒会本部", "硬式テニス部", "美術演劇部", "美術部", "山岳部", "ESS", "バドミントン部", "水泳部", "卓球部", "フェンシング部", "物理部", "化学部", "バスケ部", "剣道部", "柔道部", "マンドリン部", "吹奏楽班", "相撲部", "応援指導班", "JRC インターアクト", "商業研究部", "スキー部"};
+    private String clubOptions[] = {"部活指定なし", "風紀委員会", "ボーイスカウト部", "硬式野球部", "生徒会本部", "美術演劇部", "美術部", "山岳部", "ESS", "バドミントン部", "水泳部", "卓球部", "フェンシング部", "物理部", "化学部", "バスケ部", "剣道部", "柔道部", "マンドリン部", "吹奏楽班", "相撲部", "応援指導班", "JRC インターアクト", "商業研究部", "スキー部"};
 
     private ListView shopListView; // お店のリストを表示している部分（View）
 
