@@ -175,9 +175,13 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
             // 距離の絞り込み
             if (!selectedDistance.equals("距離指定なし")) {
                 int selectedDistanceInteger = Integer.parseInt(selectedDistance.substring(0, selectedDistance.indexOf("km圏内"))) * 1000; // メートルで比較するので1000をかける
-                double distance = calculateDistance(shops[i].getLatitude(), shops[i].getLongitude(), currentLocation.getLatitude(), currentLocation.getLongitude());
-                if (distance > selectedDistanceInteger) {
-                    continue;
+                try {
+                    double distance = calculateDistance(shops[i].getLatitude(), shops[i].getLongitude(), currentLocation.getLatitude(), currentLocation.getLongitude());
+                    if (distance > selectedDistanceInteger) {
+                        continue;
+                    }
+                } catch (Exception e) {
+                    // エミュレーターなどで起動した際に、currentLocation.getLatitude()がnullなどで帰ってくるため、trycatchでエラーを回収しています。
                 }
             }
 
